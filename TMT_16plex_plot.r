@@ -9,7 +9,7 @@ psm <- read_tsv("./psm.tsv") %>% # import the PSM table from FragPipe output
 
 # keep the information of the reporter ion abundances and retention time for plotting
 psm %>%
-    dplyr::select(c(9, 40:55)) %>%
+    dplyr::select(c(retention, 41:56)) %>%
     gather(key = "channel", value = "signal", -retention) %>%
     ggplot(aes(x = retention / 60, y = signal, color = channel)) +
     geom_line() +
